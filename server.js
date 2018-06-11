@@ -1,15 +1,10 @@
-var https = require('https');
+var http = require('http');
 var url = require('url');
 var fs = require('fs');
 
-var port = process.env.port || 8080;
+var port = process.env.port || 3000;
 
-var options = {
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('server.crt')
-};
-
-https.createServer(options, function(req, res) {
+http.createServer(function(req, res) {
 
     var page = "." + url.parse(req.url, true).pathname;
 
@@ -35,4 +30,4 @@ https.createServer(options, function(req, res) {
         });
     }
 
-}).listen(8080);
+}).listen(port);
