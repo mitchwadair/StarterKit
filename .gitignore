@@ -1,3 +1,5 @@
 emaildetails.txt
 emailcontent.txt
 StarterKit.zip
+*.pem
+*.crt
