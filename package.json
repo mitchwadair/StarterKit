@@ -1,0 +1,9 @@
+{
+  "name": "StarterKit-App",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {"testmodule" : "*"},
+  "scripts": {
+    "start": "node helloworld.js"
+  }
+}
