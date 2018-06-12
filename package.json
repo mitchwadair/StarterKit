@@ -2,7 +2,9 @@
   "name": "StarterKit-App",
   "version": "0.0.1",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "https": "^1.0.0"
+  },
   "scripts": {
     "start": "node server.js"
   }
