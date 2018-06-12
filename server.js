@@ -1,10 +1,10 @@
-var http = require('http');
+var https = require('https');
 var url = require('url');
 var fs = require('fs');
 
 var port = process.env.port || 3000;
 
-http.createServer(function(req, res) {
+https.createServer(function(req, res) {
 
     var page = "." + url.parse(req.url, true).pathname;
 
