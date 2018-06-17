@@ -3,27 +3,30 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Starting With a Kit</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="index.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 <body style="margin: 0">
-    <div id="siteHeader" style="padding: 5px; height: 20%; background-color: grey"></div>
+    <div class="container-fluid">
+        <div id="siteHeader" class="row" style="padding: 5px; height: 20%; background-color: whitesmoke"></div>
 
-    <div id="underHeaderContainer" style="height: 80%">
-        <div id="sideMenu" style="float: left; padding: 5px; max-width: 10%; height: 100%; background-color: grey"></div>
+        <div id="underHeaderContainer" class="row">
+            <div id="sideMenu" class="col-md-1" style="text-align: left; background-color: grey"></div>
 
-        <div id="contentContainer" style="padding: 5px; min-width: 90%; height: 100%; background-color: lightgrey">
-            CONTENT GOES HERE
+            <div id="contentContainer" class="col-md-11" style="padding: 5px; background-color: lightgrey">
+                CONTENT GOES HERE
+            </div>
         </div>
-
-        <div class="clear"></div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
