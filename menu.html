@@ -1,2 +1,20 @@
 <span style="font-weight: bold"><h2>Menu</h2></span>
-<span class="menu-btn"><h5>Button</h5></span>
+
+<style>
+    .btn-menu {
+        padding: 5px;
+        width: 100%;
+        border-top: 1px solid dimgrey;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+    .btn-menu:hover {
+        background-color: dimgrey;
+        color: lightgrey;
+    }
+</style>
+
+<div class="btn-menu" onclick="alert('Goes to home page');">Home</div>
+<div class="btn-menu" onclick="alert('Goes to kit browsing page');">Browse</div>
+<div class="btn-menu" onclick="alert('Goes to creation page');">Create</div>
