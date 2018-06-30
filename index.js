@@ -20,3 +20,13 @@ var loadKits = function(numKits) {
         $("#kitPreview"+i).load("kits/kitpreview.html");
     }
 }
+
+var readFromDB = function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open(
+        "GET",
+        "dbtest",
+        false
+    );
+    xhttp.send();
+}
