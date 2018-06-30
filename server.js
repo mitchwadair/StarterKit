@@ -3,13 +3,13 @@ var url = require('url');
 var fs = require('fs');
 var aws = require('aws-sdk');
 
-var credentials = fs.readFileSync("localTestingAccessKey.txt").toString().split("\n");
-var options = {
+//var credentials = fs.readFileSync("localTestingAccessKey.txt").toString().split("\n");
+/*var options = {
     accessKeyId: credentials[0].trim(),
     secretAccessKey: credentials[1].trim(),
     region: 'us-east-2'
-};
-var dynamoDB = new aws.DynamoDB(options);
+};*/
+var dynamoDB = new aws.DynamoDB(options = {region: "us-east-2"});
 
 var port = process.env.port || 8081;
 
