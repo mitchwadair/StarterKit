@@ -29,4 +29,10 @@ var readFromDB = function() {
         false
     );
     xhttp.send();
+    var response = xhttp.response;
+    var item = JSON.parse(response).Item;
+    var s = "You've just read from the database!\n";
+    s += "Kit name: " + item.KitName.S + "\n";
+    s += "Kit description: " + item.KitDescription.S;
+    alert(s);
 }

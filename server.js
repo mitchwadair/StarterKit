@@ -48,7 +48,7 @@ http.createServer(function(req, res) {
                 } else {
                     console.log("Got item: " + JSON.stringify(data));
                     res.writeHead(200, {'Content-Type': 'application/json'});
-                    return res.end(data);
+                    return res.end(JSON.stringify(data));
                 }
             });
         } else {
