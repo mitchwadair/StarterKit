@@ -33,26 +33,7 @@ http.createServer(function(req, res) {
         });*/
     } else {
         if (page == "./dbtest") {
-            console.log("Access DB");
-            var params = {
-                TableName: "Kits",
-                Key: {
-                    "KitName": {
-                        S: "TestKit"
-                    }
-                }
-            };
-            dynamoDB.getItem(params, function(err, data) {
-                if (err) {
-                    console.log(err, err.stack);
-                    res.writeHead(404, {'Content-Type': 'text/html'});
-                    return res.end("Error accessing DB");
-                } else {
-                    console.log("Got item: " + JSON.stringify(data));
-                    res.writeHead(200, {'Content-Type': 'application/json'});
-                    return res.end(JSON.stringify(data));
-                }
-            });
+            dbtest(req, res);
         } else {
             fs.readFile(page, function(error, data) {
                 if (error) {
@@ -67,3 +48,26 @@ http.createServer(function(req, res) {
     }
 
 }).listen(port);
+
+function dbtest(req, res) {
+    console.log("Access DB");
+    var params = {
+        TableName: "Kits",
+        Key: {
+            "KitName": {
+                S: "TestKit"
+            }
+        }
+    };
+    dynamoDB.getItem(params, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            return res.end("Error accessing DB");
+        } else {
+            console.log("Got item: " + JSON.stringify(data));
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            return res.end(JSON.stringify(data));
+        }
+    });
+}
