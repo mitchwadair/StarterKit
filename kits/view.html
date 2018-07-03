@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Starting With a Kit</title>
+
+    <style>
+        .btn-home {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .btn-home:hover {
+            background-color: grey;
+            color: whitesmoke;
+        }
+
+        .kit-preview {
+            background: lightgrey;
+            cursor: pointer;
+        }
+
+        .kit-preview:hover {
+            background: grey;
+            color: whitesmoke;
+        }
+
+        #sideMenu {
+            min-width: 150px;
+            max-width: 150px;
+        }
+
+        #sideMenu.active {
+            margin-left: -150px;
+        }
+
+        @media (max-width: 768px) {
+            #sideMenu {
+                margin-left: -150px;
+            }
+            #sideMenu.active {
+                margin-left: 0;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body style="margin: 0; height: auto">
+    <div class="container-fluid" style="position: absolute; height: 100%">
+        <div id="siteHeader" class="row" style="height: 10%; background-color: lavenderblush"></div>
+
+        <div id="underHeaderContainer" class="row" style="position: absolute; display: flex; width: 100%; height: 90%">
+            <div id="sideMenu" style="padding-left: 5px; background-color: grey; height: 100%; overflow: hidden"></div>
+
+            <div id="contentContainer" class="col-sm-12 clearfix" style="padding: 5px; background-color: lightgrey; height: 100%; overflow-y: scroll">
+                <button type="button" id="menuToggleButton" class="btn btn-default" style="float: left">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="view.js"></script>
+</body>
+
+</html>

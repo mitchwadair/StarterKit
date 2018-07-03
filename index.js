@@ -1,5 +1,7 @@
 $(document).ready(function() {
-    $("#siteHeader").load("header.html");
+    $("#siteHeader").load("header.html", function() {
+        $("#pageTitle").html("Starting With a Kit <small>Home</small>");
+    });
     $("#sideMenu").load("menu.html");
 
     $('#menuToggleButton').on('click', function () {
@@ -8,6 +10,10 @@ $(document).ready(function() {
 
     loadKits(3);
 });
+
+var viewKit = function() {
+    window.location.href = "./kits/view.html?id=test";
+}
 
 var loadKits = function(numKits) {
     var s = "";
