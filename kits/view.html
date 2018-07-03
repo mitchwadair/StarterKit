@@ -64,10 +64,25 @@
                 </button><br>
                 <div id="lowerContentContainer" class="container-fluid" style="padding-top: 20px">
                     <div id="kitContent" class="row" style="background: whitesmoke">
-                        <div id="kitInfo" class="col-sm-6" style="padding-left: 20px; padding-right: 20px">
-                            <h3 id="kitName" style=>Name</h3>
+                        <div id="kitInfo" class="col-sm-6" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px">
+                            <h3 id="kitName">Name <small id="kitTotalPrice">$1337</small></h3>
                             <p id="kitDescription">Description</p>
-                            <span id="tags">tags?</span>
+                            <div class="row">
+                                <div class="col-xs-1">
+                                    <button id="kitUpvote" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-thumbs-up"><span>
+                                    </button>
+                                </div>
+                                <div class="col-xs-1">
+                                    <button id="kitDownvote" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-thumbs-down"><span>
+                                    </button>
+                                </div>
+                                <div class="col-xs-10">
+                                    <button id="kitPurchase" class="btn btn-default" style="float: right">Purchase Kit</button>
+                                </div>
+
+                            </div>
                         </div>
                         <div id="kitItems" class="col-sm-6" style="padding-left: 20px; padding-right: 20px">
                             ITEMS GO HERE

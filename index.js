@@ -4,7 +4,7 @@ $(document).ready(function() {
     });
     $("#sideMenu").load("menu.html");
 
-    $('#menuToggleButton').on('click', function () {
+    $('#menuToggleButton').on("click", function () {
         $('#sideMenu').toggleClass('active');
     });
 
