@@ -3,8 +3,8 @@ var url = require('url');
 var fs = require('fs');
 var aws = require('aws-sdk');
 
-var credentials = fs.readFileSync("localTestingAccessKey.txt").toString().split("\n");
-var options = {
+var credentials = fs.readFileSync("localTestingAccessKey.txt").toString().split("\n"); //hiding important stuff
+var options = { //these options for local testing
     accessKeyId: credentials[0].trim(),
     secretAccessKey: credentials[1].trim(),
     region: 'us-east-2'
@@ -55,7 +55,7 @@ function dbtest(req, res) {
         TableName: "Kits",
         Key: {
             "KitName": {
-                S: "TestKit"
+                S: "Game Like Mitch"
             }
         }
     };
