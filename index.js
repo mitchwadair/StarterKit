@@ -8,7 +8,7 @@ $(document).ready(function() {
         $('#sideMenu').toggleClass('active');
     });
 
-    loadKits(3);
+    loadKits(2);
 });
 
 var viewKit = function() {
@@ -28,7 +28,7 @@ var loadKits = function(numKits) {
     for (var i = 0; i < numKits; i++) {
         var preview = $("#kitPreview" + i);
         preview.load("kits/kitpreview.html", function() {
-            alert(preview);
+            //alert(preview.html());
             preview.find("#kitName").html(kit.KitName.S);
             preview.find("#kitDesc").html(kit.KitDescription.S);
             var numItemsInKit = kit.Items.L.length;
