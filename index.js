@@ -11,8 +11,8 @@ $(document).ready(function() {
     loadKits(2);
 });
 
-var viewKit = function() {
-    window.location.href = "./kits/view.html?id=test";
+var viewKit = function(name) {
+    window.location.href = "./kits/view.html?id=" + name;
 }
 
 var loadKits = function(numKits) {
@@ -26,22 +26,26 @@ var loadKits = function(numKits) {
     //alert(JSON.stringify(kit));
 
     for (var i = 0; i < numKits; i++) {
-        var preview = $("#kitPreview" + i);
-        preview.load("kits/kitpreview.html", function() {
-            //alert(preview.html());
-            preview.find("#kitName").html(kit.KitName.S);
-            preview.find("#kitDesc").html(kit.KitDescription.S);
-            var numItemsInKit = kit.Items.L.length;
-            var images = "<table><tr>";
-            for (var j = 0; j < numItemsInKit; j++) {
-                //alert(kit.Items.L[i].L[0].S);
-                images += "<td>";
-                images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image'/>";
-                images += "</td>";
-            }
-            s += "</tr></table>"
-            preview.find("#kitPics").html(images);
-        });
+        (function(){ //due to JS being dumb af, I have to wrap this dynamic html loading stuff inside a function.....
+            var preview = $("#kitPreview" + i);
+            preview.load("kits/kitpreview.html", function() {
+                preview.find("#kitContainer").click(function() { //this function gets called on load, so must have a dumb wrapper function to prevent instant redirect
+                    viewKit(kit.KitName.S);
+                });
+                preview.find("#kitName").html(kit.KitName.S);
+                preview.find("#kitDesc").html(kit.KitDescription.S);
+                var numItemsInKit = kit.Items.L.length;
+                var images = "<table><tr>";
+                for (var j = 0; j < numItemsInKit; j++) {
+                    //alert(kit.Items.L[i].L[0].S);
+                    images += "<td>";
+                    images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image'/>";
+                    images += "</td>";
+                }
+                s += "</tr></table>"
+                preview.find("#kitPics").html(images);
+            });
+        })();
     }
 }
 
