@@ -8,7 +8,7 @@ $(document).ready(function() {
         $('#sideMenu').toggleClass('active');
     });
 
-    loadKits(2);
+    loadKits(3);
 });
 
 var viewKit = function(name) {
@@ -35,11 +35,11 @@ var loadKits = function(numKits) {
                 preview.find("#kitName").html(kit.KitName.S);
                 preview.find("#kitDesc").html(kit.KitDescription.S);
                 var numItemsInKit = kit.Items.L.length;
-                var images = "<table><tr>";
+                var images = "<table style='margin: auto'><tr>";
                 for (var j = 0; j < numItemsInKit; j++) {
                     //alert(kit.Items.L[i].L[0].S);
                     images += "<td>";
-                    images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image'/>";
+                    images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image' style='max-height: 150px'/>";
                     images += "</td>";
                 }
                 s += "</tr></table>"
