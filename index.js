@@ -38,7 +38,7 @@ var loadKits = function(numKits) {
                 var images = "<table style='margin: auto'><tr>";
                 for (var j = 0; j < numItemsInKit; j++) {
                     //alert(kit.Items.L[i].L[0].S);
-                    images += "<td>";
+                    images += "<td style='padding: 2px'>";
                     images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image' style='max-height: 150px'/>";
                     images += "</td>";
                 }
