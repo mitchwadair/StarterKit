@@ -41,7 +41,7 @@ var loadKitInfo = function(kitName) {
                     s += "<p>" + kit.Items.L[i].L[1].S + "</p>";
                     s += "</div>";
                     s += "<div class='col-sm-6'>";
-                    s += "<img src='" + kit.Items.L[i].L[3].S + "' class='img-responsive img-rounded' alt='" + kit.Items.L[i].L[0].S + "' style='max-height: 200px; margin: auto'/>";
+                    s += "<img src='" + kit.Items.L[i].L[3].S + "' class='img-responsive img-rounded' alt='" + kit.Items.L[i].L[0].S + "' style='max-height: 200px; margin: auto; padding: 10px'/>";
                     s += "</div></div></div>";
                 }
                 s += "<div class='col-xs-12'><br></div></div>";
