@@ -11,10 +11,6 @@ $(document).ready(function() {
     loadKits(3);
 });
 
-var viewKit = function(name) {
-    window.location.href = "./kits/view.html?id=" + name;
-}
-
 var loadKits = function(numKits) {
     var s = "";
     for (var i = 0; i < numKits; i++) {
@@ -47,6 +43,10 @@ var loadKits = function(numKits) {
             });
         })();
     }
+}
+
+var viewKit = function(name) {
+    window.location.href = "./kits/view.html?id=" + name;
 }
 
 var readFromDB = function() {
