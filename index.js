@@ -41,6 +41,9 @@ var loadKits = function(numKits) {
                     images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image' style='max-height: 150px'/>";
                     images += "</td>";
                 }
+                if (numItemsInKit > 4) {
+                    images += "<td style='padding: 2px; font-weight: bold'>...</td>";
+                }
                 s += "</tr></table>"
                 preview.find("#kitPics").html(images);
             });

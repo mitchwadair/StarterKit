@@ -17,7 +17,7 @@ http.createServer(function(req, res) {
 
     var page = "." + url.parse(req.url, true).pathname;
 
-    console.log(page);
+    //console.log(page);
 
     if (page == "./") {
         res.writeHead(302, {'Location': '/index.html'});
@@ -54,6 +54,7 @@ http.createServer(function(req, res) {
 }).listen(port);
 
 function dbGetNumberOfKits(res) {
+    console.log("dbGetNumberOfKits");
     var params = {
         TableName: "Kits"
     };
@@ -71,6 +72,7 @@ function dbGetNumberOfKits(res) {
 };
 
 function dbScan(res) {
+    console.log("dbScan");
     var params = {
         TableName: "Kits"
     };
@@ -88,7 +90,7 @@ function dbScan(res) {
 }
 
 function dbGetItem(req, res) {
-    console.log("Access DB");
+    console.log("dbGetItem");
     var kit = url.parse(req.url, true).query.kit;
     var params = {
         TableName: "Kits",
