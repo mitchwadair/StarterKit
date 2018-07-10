@@ -14,14 +14,30 @@ $(document).ready(function() {
 
     $("#kitPurchase").on("click", purchaseKit);
 
-    loadKitInfo();
+    loadKitInfo(getUrlParameter("id"));
 });
+
+//ty stack overflow
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 
 var loadKitInfo = function(kitName) {
     var xhttp = new XMLHttpRequest();
     xhttp.open(
         "GET",
-        "../dbtest",
+        "../dbtest?kit=" + kitName,
         true
     );
     xhttp.onload = function() {
@@ -52,16 +68,16 @@ var loadKitInfo = function(kitName) {
         }
     }
     xhttp.send();
-}
+};
 
 var upvoteKit = function() {
     alert("This will increase the rating of the kit");
-}
+};
 
 var downvoteKit = function() {
     alert("This will decrease the rating of the kit");
-}
+};
 
 var purchaseKit = function() {
     alert("This will purchase the kit");
-}
+};

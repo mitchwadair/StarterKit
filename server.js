@@ -51,11 +51,12 @@ http.createServer(function(req, res) {
 
 function dbtest(req, res) {
     console.log("Access DB");
+    var kit = url.parse(req.url, true).query.kit;
     var params = {
         TableName: "Kits",
         Key: {
             "KitName": {
-                S: "Game Like Mitch"
+                S: kit
             }
         }
     };
