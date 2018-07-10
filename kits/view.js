@@ -37,7 +37,7 @@ var loadKitInfo = function(kitName) {
     var xhttp = new XMLHttpRequest();
     xhttp.open(
         "GET",
-        "../dbtest?kit=" + kitName,
+        "../dbgetitem?kit=" + kitName,
         true
     );
     xhttp.onload = function() {
