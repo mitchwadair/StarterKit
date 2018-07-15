@@ -109,3 +109,7 @@ var readFromDB = function(kitName) {
     }
     return JSON.parse(response).Item;
 }
+
+var openSubmissionForm = function() {
+    window.open("https://goo.gl/forms/R5MrGhhyUhYUWuBi2");
+};
