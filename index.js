@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#siteHeader").load("header.html", function() {
-        $("#pageTitle").html("Starting With a Kit <small>Home</small>");
+        $("#pageTitle").html("Home");
     });
     $("#sideMenu").load("menu.html");
 
@@ -8,12 +8,8 @@ $(document).ready(function() {
         $('#sideMenu').toggleClass('active');
     });
 
-    loadKits(3);
+    loadKits(2);
 });
-
-var viewKit = function(name) {
-    window.location.href = "./kits/view.html?id=" + name;
-}
 
 var loadKits = function(numKits) {
     var s = "";
@@ -22,11 +18,14 @@ var loadKits = function(numKits) {
     }
     $("#sampleKitsContainer").html(s);
 
-    var kit = readFromDB();
+    var kits = scanDB();
+
     //alert(JSON.stringify(kit));
 
     for (var i = 0; i < numKits; i++) {
         (function(){ //due to JS being dumb af, I have to wrap this dynamic html loading stuff inside a function.....
+            //alert("Kit name: " + kits.Items[i].KitName.S);
+            var kit = readFromDB(kits.Items[i].KitName.S);
             var preview = $("#kitPreview" + i);
             preview.load("kits/kitpreview.html", function() {
                 preview.find("#kitContainer").click(function() { //this function gets called on load, so must have a dumb wrapper function to prevent instant redirect
@@ -36,11 +35,14 @@ var loadKits = function(numKits) {
                 preview.find("#kitDesc").html(kit.KitDescription.S);
                 var numItemsInKit = kit.Items.L.length;
                 var images = "<table style='margin: auto'><tr>";
-                for (var j = 0; j < numItemsInKit; j++) {
+                for (var j = 0; j < (numItemsInKit <= 4 ? numItemsInKit : 4); j++) {
                     //alert(kit.Items.L[i].L[0].S);
-                    images += "<td>";
+                    images += "<td style='padding: 2px'>";
                     images += "<img src='" + kit.Items.L[j].L[3].S + "' class='img-thumbnail rounded' alt='Item Image' style='max-height: 150px'/>";
                     images += "</td>";
+                }
+                if (numItemsInKit > 4) {
+                    images += "<td style='padding: 2px; font-weight: bold'>...</td>";
                 }
                 s += "</tr></table>"
                 preview.find("#kitPics").html(images);
@@ -49,11 +51,49 @@ var loadKits = function(numKits) {
     }
 }
 
-var readFromDB = function() {
+var viewKit = function(name) {
+    window.location.href = "./kits/view.html?id=" + name;
+}
+
+var scanDB = function(callback) {
     var xhttp = new XMLHttpRequest();
     xhttp.open(
         "GET",
-        "dbtest",
+        "dbscan",
+        false
+    );
+    xhttp.send();
+    var response = xhttp.response;
+    if (xhttp.status == 200){
+        //alert(response);
+        return JSON.parse(response);
+    } else {
+        alert(response);
+    }
+};
+
+var numKits = function() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open(
+        "GET",
+        "dbgetnumberofkits",
+        false
+    );
+    xhttp.send();
+    var response = xhttp.response;
+    if (xhttp.status == 200){
+        //alert(response);
+        return response;
+    } else {
+        alert(response);
+    }
+};
+
+var readFromDB = function(kitName) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open(
+        "GET",
+        "../dbgetitem?kit=" + kitName,
         false
     );
     xhttp.send();
@@ -65,7 +105,11 @@ var readFromDB = function() {
         s += "Kit description: " + item.KitDescription.S;
         //alert(s);
     } else {
-        alert(response);
+        alert("read issue: " + response);
     }
     return JSON.parse(response).Item;
 }
+
+var openSubmissionForm = function() {
+    window.open("https://goo.gl/forms/R5MrGhhyUhYUWuBi2");
+};

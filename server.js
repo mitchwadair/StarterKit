@@ -17,7 +17,7 @@ http.createServer(function(req, res) {
 
     var page = "." + url.parse(req.url, true).pathname;
 
-    console.log(page);
+    //console.log(page);
 
     if (page == "./") {
         res.writeHead(302, {'Location': '/index.html'});
@@ -32,8 +32,12 @@ http.createServer(function(req, res) {
             return res.end();
         });*/
     } else {
-        if (page == "./dbtest") {
-            dbtest(req, res);
+        if (page == "./dbgetitem") {
+            dbGetItem(req, res);
+        } else if (page == "./dbgetnumberofkits") {
+            dbGetNumberOfKits(res);
+        } else if (page == "./dbscan") {
+            dbScan(res);
         } else {
             fs.readFile(page, function(error, data) {
                 if (error) {
@@ -49,13 +53,50 @@ http.createServer(function(req, res) {
 
 }).listen(port);
 
-function dbtest(req, res) {
-    console.log("Access DB");
+function dbGetNumberOfKits(res) {
+    console.log("dbGetNumberOfKits");
+    var params = {
+        TableName: "Kits"
+    };
+    dynamoDB.describeTable(params, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            return res.end("Error accessing DB");
+        } else {
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            //console.log(data);
+            return res.end(data.ItemCount);
+        }
+    });
+};
+
+function dbScan(res) {
+    console.log("dbScan");
+    var params = {
+        TableName: "Kits"
+    };
+    dynamoDB.scan(params, function(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+            res.writeHead(404, {'Content-Type': 'text/html'});
+            return res.end("Error accessing DB");
+        } else {
+            //console.log(data);
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            return res.end(JSON.stringify(data));
+        }
+    });
+}
+
+function dbGetItem(req, res) {
+    console.log("dbGetItem");
+    var kit = url.parse(req.url, true).query.kit;
     var params = {
         TableName: "Kits",
         Key: {
             "KitName": {
-                S: "Game Like Mitch"
+                S: kit
             }
         }
     };
@@ -65,9 +106,9 @@ function dbtest(req, res) {
             res.writeHead(404, {'Content-Type': 'text/html'});
             return res.end("Error accessing DB");
         } else {
-            console.log("Got item: " + JSON.stringify(data));
+            //console.log("Got item: " + JSON.stringify(data));
             res.writeHead(200, {'Content-Type': 'application/json'});
             return res.end(JSON.stringify(data));
         }
     });
-}
+};

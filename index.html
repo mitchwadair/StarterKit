@@ -12,21 +12,22 @@
         .btn-home {
             padding: 5px;
             cursor: pointer;
+            background: #00aeef;
+            color: black;
         }
 
         .btn-home:hover {
-            background-color: grey;
+            background-color: #0096cc;
             color: whitesmoke;
         }
 
         .kit-preview {
-            background: lightgrey;
+            background: whitesmoke;
             cursor: pointer;
         }
 
         .kit-preview:hover {
-            background: grey;
-            color: whitesmoke;
+            background: lightgrey;
         }
 
         #sideMenu {
@@ -52,26 +53,26 @@
 </head>
 
 <body style="margin: 0; height: auto">
-    <div class="container-fluid" style="position: absolute; height: 100%">
-        <div id="siteHeader" class="row" style="height: 10%; background-color: lavenderblush"></div>
+    <div class="container-fluid" style="position: absolute; height: 100%; width: 100%">
+        <div id="siteHeader" class="row" style="height: 70px; background: #1a1a1a"></div>
 
-        <div id="underHeaderContainer" class="row" style="position: absolute; display: flex; width: 100%; height: 90%">
-            <div id="sideMenu" style="padding-left: 5px; background-color: grey; height: 100%; overflow: hidden"></div>
+        <div id="underHeaderContainer" class="row" style="position: absolute; display: flex; width: 100%; height: calc(100% - 70px)">
+            <div id="sideMenu" style="background-color: #1a1a1a; height: 100%; overflow: hidden"></div>
 
-            <div id="contentContainer" class="col-sm-12 clearfix" style="padding: 5px; background-color: lightgrey; height: 100%; overflow-y: scroll">
+            <div id="contentContainer" class="col-sm-12 clearfix" style="padding: 5px; background-color: whitesmoke; height: 100%; overflow-y: scroll">
                 <div id="swakWelcome" style="text-align: center; height: 100%">
                     <button type="button" id="menuToggleButton" class="btn btn-default" style="float: left">
                         <span class="glyphicon glyphicon-menu-hamburger"></span>
                     </button><br><br>
-                    <img src="logo.png" class="img-fluid" alt="SWAKLogo" style="display: block; margin: auto; padding-top: 20px;">
+                    <img src="../images/StartingWithAKit_FullLogo.png" class="img-fluid" alt="SWAKLogo" style="display: block; margin: auto; padding-top: 20px; max-height: 125px">
                     <h1>Welcome!</h1>
                     <h2>Starting With a Kit</h2>
                     <h4>Discover new things. Help others find a passion!</h4>
                     <div id="lowerContentContainer" class="container-fluid" style="padding-top: 20px">
                         <div class="row">
                             <div id="sampleKits" class="col-sm-7">
-                                <div class="col-xs-12" style="background: whitesmoke">
-                                    <h3>Featured Kits</h3>
+                                <div class="col-xs-12" style="background: #00aeef">
+                                    <h3 style="color: #1a1a1a">Featured Kits</h3>
                                     <div id="sampleKitsContainer">
                                         KITS GO HERE
                                     </div>
@@ -79,13 +80,13 @@
                             </div>
                             <div class="col-sm-12 hidden-lg hidden-md hidden-sm" style="clear: both">&nbsp;</div> <!-- space for vertical gap -->
                             <div id="kitCreateLink" class="col-sm-5">
-                                <div class="col-xs-12" style="background: whitesmoke; padding: 20px">
-                                    <div id=homeCreateLink class="btn-home" onclick="readFromDB()"><h2>Create a Kit</h2></div>
+                                <div class="col-xs-12" style="background: #00aeef; padding: 20px">
+                                    <div id=homeCreateLink class="btn-home" onclick="openSubmissionForm()"><h2>Create a Kit</h2></div>
                                 </div>
                                 <div class="col-xs-12"><br></div> <!-- Empty space for gap -->
-                                <div class="col-xs-12" style="background: whitesmoke; padding: 20px">
-                                    <h2>About??</h2>
-                                    <p>
+                                <div class="col-xs-12" style="background: #00aeef; padding: 20px">
+                                    <h2 style="color: #1a1a1a">About??</h2>
+                                    <p style="color: #1a1a1a">
                                         Do I maybe put a general about section here to fill space that the featured kits section will create?
                                     </p>
                                 </div>

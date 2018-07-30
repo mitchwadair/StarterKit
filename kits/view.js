@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#siteHeader").load("../header.html", function() {
-        $("#pageTitle").html("Starting With a Kit <small>View</small>");
+        $("#pageTitle").html("View");
     });
     $("#sideMenu").load("../menu.html");
 
@@ -14,14 +14,30 @@ $(document).ready(function() {
 
     $("#kitPurchase").on("click", purchaseKit);
 
-    loadKitInfo();
+    loadKitInfo(getUrlParameter("id"));
 });
+
+//ty stack overflow
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 
 var loadKitInfo = function(kitName) {
     var xhttp = new XMLHttpRequest();
     xhttp.open(
         "GET",
-        "../dbtest",
+        "../dbgetitem?kit=" + kitName,
         true
     );
     xhttp.onload = function() {
@@ -34,17 +50,19 @@ var loadKitInfo = function(kitName) {
                 $("#kitDescription").html(kit.KitDescription.S);
                 var s = "<div class='row'>";
                 for (var i = 0; i < kit.Items.L.length; i++) {
-                    s += "</div></div><div class='col-xs-12'><br></div>";
-                    s += "<div class='col-xs-12' onclick='window.open(\"" + kit.Items.L[i].L[2].S + "\");' style='cursor: pointer; background: lightgrey'><div class='row'>";
+                    if (i > 0) {
+                        s += "<div class='col-xs-12'><br></div>";
+                    }
+                    s += "<div class='col-xs-12' onclick='window.open(\"" + kit.Items.L[i].L[2].S + "\");' style='cursor: pointer; background: #00aeef'><div class='row'>";
                     s += "<div class='col-sm-6'>";
-                    s += "<h4>" + kit.Items.L[i].L[0].S + " <small>$1337</small></h4>"
+                    s += "<h4>" + kit.Items.L[i].L[0].S + " <small style='color: #1a1a1a'>$1337</small></h4>"
                     s += "<p>" + kit.Items.L[i].L[1].S + "</p>";
                     s += "</div>";
                     s += "<div class='col-sm-6'>";
-                    s += "<img src='" + kit.Items.L[i].L[3].S + "' class='img-responsive img-rounded' alt='" + kit.Items.L[i].L[0].S + "' style='max-height: 200px; margin: auto'/>";
-                    s += "</div>";
+                    s += "<img src='" + kit.Items.L[i].L[3].S + "' class='img-responsive img-rounded' alt='" + kit.Items.L[i].L[0].S + "' style='max-height: 200px; margin: auto; padding: 10px'/>";
+                    s += "</div></div></div>";
                 }
-                s += "</div>";
+                s += "<div class='col-xs-12'><br></div></div>";
                 $("#kitItems").html(s);
             } else {
                 alert(response);
@@ -52,16 +70,16 @@ var loadKitInfo = function(kitName) {
         }
     }
     xhttp.send();
-}
+};
 
 var upvoteKit = function() {
     alert("This will increase the rating of the kit");
-}
+};
 
 var downvoteKit = function() {
     alert("This will decrease the rating of the kit");
-}
+};
 
 var purchaseKit = function() {
     alert("This will purchase the kit");
-}
+};
