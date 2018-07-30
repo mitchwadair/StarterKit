@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $("#siteHeader").load("../header.html", function() {
-        $("#pageTitle").html("Starting With a Kit <small>View</small>");
+        $("#pageTitle").html("View");
     });
     $("#sideMenu").load("../menu.html");
 
